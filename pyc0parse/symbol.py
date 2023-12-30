@@ -59,9 +59,11 @@ class Symbolman:
 		else:
 			return self.gid_match_fn(sym)
 	def add_symbol(self, sym, _istype):
+		if isinstance(sym, S):
+			return
 		if not isinstance(sym, str):
-			raise Exception(sym)
-		if sym[0].isdigit():
+			raise Exception(sym, type(sym))
+		if not sym[0].isalpha():
 			return
 		if opprec(sym) != None:
 			return
